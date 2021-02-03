@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fun From API</title>
+</head>
+<body>
+    <h1 id="Head"></h1>
+    <h2> <a id="Explore-link"  href="">Do Something</a></h2>
+    <script>
+
+        document.getElementById("Explore-link").addEventListener("click",clickOnLink())
+        function clickOnLink(){
+            fetch("http://www.boredapi.com/api/activity/")
+            .then ( res => res.json() )
+            .then ( data => {
+               console.log(data);
+               document.getElementById("Head").innerText = data.activity;
+            })
+        }
+        setInterval(() => {
+            clickOnLink()
+        }, 5000);
+
+    </script>
+</body>
+</html>
